@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Counter</title>
+    <style>
+        body{
+            padding: 50px 100px;
+           
+        }
+        h1{
+            text-align: center;
+            background-color: aqua;
+            padding:10px;
+            margin-bottom: 1px;
+
+        }
+        #txt{
+            height: 300px;
+            width: 99.2%;
+           max-width: 99.2%;
+           font-size: 16px;
+           
+        }
+        #counter{
+            text-align: center;
+            background-color: rgb(18, 114, 223);
+          margin-top: 2px;
+          margin-bottom: 2px;
+          padding: 10px;
+          font-weight: bold;
+          font-size: 25px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Word and Characters Counter</h1>
+    <p id="counter">
+        <span id="word">0</span> Words
+        <span id="char">0</span> Characters
+    </p>
+    <textarea id="txt" cols="30" rows="10">  
+    </textarea>
+   
+    <script>
+        let txtbox= document.getElementById("txt");
+
+        txtbox.addEventListener('input',function(){
+            var text= this.value //textbox me rakhe values ko humne text variable me store kara liya
+            let characters=text.length;
+            document.getElementById("char").innerHTML=characters;
+
+
+        text=text.trim();     //To remove spaces present at end being counted as words we used trim function
+
+        //counting words by split function at each space 
+        
+        let words= text.split(" ");   //words array now stores the words broken from spaces
+       
+        let cleanlist = words.filter(function(elem){               //remove spaces between two words and storing them in "cleanlist" array;
+            return elem != "";  //return if not space
+        })
+        document.getElementById("word").innerHTML=cleanlist.length;   
+        if(cleanlist.length==1000){
+            alert("WOW !! You have written 1000 words");
+        }           
+        });
+       
+    </script>
+</body>
+</html>
